@@ -23,12 +23,12 @@ Q1= df["distance_to_the_nearest_MRT_station"].quantile(0.25)
 Q3= df["distance_to_the_nearest_MRT_station"].quantile(0.75)
 IQR= Q3-Q1
 
-alt_sinir=  Q1 + 1.5*IQR
-ust_sinir= Q3 + 1.5*IQR
+least_border=  Q1 + 1.5*IQR
+top_border= Q3 + 1.5*IQR
 
-aykiri_df= df["distance_to_the_nearest_MRT_station"]>ust_sinir
-df_final= df["distance_to_the_nearest_MRT_station"][aykiri_df]=ust_sinir
-#rint(df["distance_to_the_nearest_MRT_station"][aykiri_df])
+outlier_df= df["distance_to_the_nearest_MRT_station"]>top_border
+df_final= df["distance_to_the_nearest_MRT_station"][outlier_df]=top_border
+#print(df["distance_to_the_nearest_MRT_station"][outlier_df])
 
 """
 Index(['No', 'transaction_date', 'house_age',
